@@ -1,0 +1,37 @@
+<footer class="bg-dark text-white py-4 mt-auto">
+    <div class="container">
+        <div class="row">
+            
+            {# Columna 1: Información Principal y Lema #}
+            <div class="col-md-6 mb-3 mb-md-0">
+                <h5 class="text-uppercase text-primary">Escuela de Fútbol TOHALLY</h5>
+                <p class="small">Forjando el futuro del fútbol con disciplina y pasión.</p>
+            </div>
+            
+            {# Columna 2: Enlaces Rápidos (usando los endpoints que sí existen) #}
+            <div class="col-md-3 mb-3 mb-md-0">
+                <h6 class="text-uppercase">Enlaces Rápidos</h6>
+                <ul class="list-unstyled">
+                    <li><a href="{{ url_for('home') }}" class="text-white text-decoration-none">Inicio</a></li>
+                    <li><a href="{{ url_for('nosotros') }}" class="text-white text-decoration-none">Nosotros</a></li>
+                    <li><a href="{{ url_for('contacto') }}" class="text-white text-decoration-none">Contacto</a></li>
+                    <li><a href="{{ url_for('noticias') }}" class="text-white text-decoration-none">Noticias</a></li>
+                </ul>
+            </div>
+            
+            {# Columna 3: Redes Sociales #}
+            <div class="col-md-3">
+                <h6 class="text-uppercase">Síguenos</h6>
+                {# Estos enlaces son solo marcadores ('#') que puedes actualizar #}
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
+            </div>
+        </div>
+        
+        {# Sección de Derechos de Autor #}
+        <div class="text-center pt-3 border-top border-secondary mt-3">
+            <p class="mb-0 small">&copy; 2025 TOHALLY | Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>

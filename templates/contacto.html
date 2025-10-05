@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto y Solicitudes - TOHALLY{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4 text-primary">Contáctanos y Envía tu Solicitud</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-3">
+                <h3 class="card-title text-success">Formulario de Pre-Inscripción</h3>
+                <p class="text-muted">Inscríbete para una prueba. Te contactaremos para más detalles.</p>
+                
+                <form method="POST" action="{{ url_for('contacto') }}">
+                    <input type="hidden" name="tipo_formulario" value="preinscripcion"> 
+                    
+                    <div class="mb-3">
+                        <label for="nombre_alumno" class="form-label">Nombre Completo del Alumno</label>
+                        <input type="text" class="form-control" id="nombre_alumno" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edad_alumno" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="edad_alumno" name="edad" required min="5" max="18">
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoría o Posición Preferida</label>
+                        <select class="form-select" id="categoria" name="categoria" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Sub-8">Sub-8 (5-8 años)</option>
+                            <option value="Sub-12">Sub-12 (9-12 años)</option>
+                            <option value="Sub-15">Sub-15 (13-15 años)</option>
+                            <option value="Sub-18">Sub-18 (16-18 años)</option>
+                            <option value="Arquero">Arquero</option>
+                            <option value="Defensa">Defensa</option>
+                            <option value="Mediocampo">Mediocampo</option>
+                            <option value="Delantero">Delantero</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contacto_tutor" class="form-label">Teléfono o Email de Contacto del Tutor</label>
+                        <textarea class="form-control" id="contacto_tutor" name="contacto" rows="2" required placeholder="Ej: 0999888777 / correo@ejemplo.com"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Enviar Solicitud de Prueba</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-3">
+                <h3 class="card-title text-info">Consulta o Sugerencia</h3>
+                <p class="text-muted">Usa este formulario para preguntas generales o comentarios.</p>
+                
+                <form method="POST" action="{{ url_for('contacto') }}">
+                    <input type="hidden" name="tipo_formulario" value="consulta">
+                    
+                    <div class="mb-3">
+                        <label for="nombre_contacto" class="form-label">Tu Nombre</label>
+                        <input type="text" class="form-control" id="nombre_contacto" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email_contacto" class="form-label">Tu Email</label>
+                        <input type="email" class="form-control" id="email_contacto" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje_contacto" class="form-label">Mensaje o Sugerencia</label>
+                        <textarea class="form-control" id="mensaje_contacto" name="mensaje" rows="4" required></textarea>
+                        <input type="hidden" name="contacto" value="N/A"> 
+                    </div>
+                    <button type="submit" class="btn btn-info w-100">Enviar Consulta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

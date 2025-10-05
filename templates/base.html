@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Escuela de Fútbol TOHALLY{% endblock %}</title>
+    {# 🛑 CRÍTICO: CSS de Bootstrap #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    {# Estilos de Bootstrap Icons #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    {# Enlace a estilos personalizados #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    {# 🎯 AÑADIMOS UN ESTILO PARA ELIMINAR EL MARGIN POR DEFECTO DEL BODY #}
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+}
+    </style>
+
+    {% block custom_styles %}{% endblock %}
+</head>
+
+<body class="min-vh-100">
+
+    {# ⚽️ BARRA DE NAVEGACIÓN (MENÚ) - PADDING REDUCIDO A 0.1rem #}
+    <nav class="navbar navbar-dark bg-dark" style="padding-top: 0.1rem; padding-bottom: 0.1rem;">
+    <div class="container-fluid d-flex align-items-center flex-nowrap px-0">
+            <a class="navbar-brand d-flex align-items-center me-auto py-0" style="font-size: 1.2rem;" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo TOHALLY" height="40" class="d-inline-block">TOHALLY
+            </a>
+
+<div class="d-flex align-items-center flex-nowrap ps-3 pe-3">
+     <ul class="list-unstyled d-none d-md-flex flex-row p-0 m-0 align-items-center flex-nowrap" style="margin-right: 1.5rem;">
+            {# MODIFICADO: Cambiado 'me-1' a 'me-3' para más espacio #}
+                    <li class="me-3"><a class="text-white fw-bold py-0 d-block" style="text-decoration: none; font-size: 1rem;" href="{{ url_for('home') }}">Inicio</a></li>
+                    <li class="me-3"><a class="text-white fw-bold py-0 d-block" style="text-decoration: none; font-size: 1rem;" href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                    <li class="me-3"><a class="text-white fw-bold py-0 d-block" style="text-decoration: none; font-size: 1rem;" href="{{ url_for('noticias') }}">Noticias</a></li>
+                    <li class="me-3"><a class="text-white fw-bold py-0 d-block" style="text-decoration: none; font-size: 1rem;" href="{{ url_for('contacto') }}">Contacto</a></li>
+                    <li class="me-3"><a class="text-white fw-bold py-0 d-block" style="text-decoration: none; font-size: 1rem;" href="{{ url_for('movimiento') }}">Movimiento</a></li>
+      </ul>
+
+                <div class="d-flex align-items-center flex-nowrap">
+                    <a class="fw-bold text-warning align-self-center py-0" style="text-decoration: none; white-space: nowrap; font-size: 0.8rem; margin-right: 0.5rem;" href="{{ url_for('inscribir_estudiante') }}">Inscribir Estudiante</a>
+                <div>
+                        {% if current_user.is_authenticated %}
+                        {# MODIFICADO: Padding ajustado para hacerlo un poco más alto (aumentado padding vertical a .25rem) #}
+                        <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-light" style="white-space: nowrap; padding: .25rem .4rem; font-size: .9rem;">
+                        <i class="bi bi-person-fill d-lg-none"></i>
+                        <span class="d-none d-lg-inline">Cerrar Sesión ({{ current_user.nombre }})</span>
+                        </a>
+                        {% else %}
+                        {# MODIFICADO: Padding ajustado para hacerlo un poco más alto (aumentado padding vertical a .25rem) #}
+                            <a href="{{ url_for('login') }}" class="btn btn-warning btn-sm shadow-sm" style="white-space: nowrap; padding: .25rem .4rem; font-size: .9rem;">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="container p-0">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show mt-1" role="alert">
+              {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    <main>
+         {% block content %}{% endblock %}
+    </main>
+
+    {% include 'pie_de_pagina.html' %} 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% block custom_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Editar' if alumno else 'Inscribir' }} Estudiante{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+   <div class="row justify-content-center">
+    <div class="col-md-8">
+    <h1 class="mb-4">{{ 'Editar Alumno' if alumno else 'Inscribir Nuevo Estudiante' }}</h1>
+ 
+ <form method="POST"> 
+ 
+ <div class="card shadow-sm mb-4">
+ <div class="card-header bg-primary text-white">Datos del Estudiante</div>
+ <div class="card-body">
+ <div class="row">
+ <div class="col-md-6 mb-3">
+ <label for="nombre" class="form-label">Nombre(s) del Estudiante</label>
+ <input type="text" class="form-control" id="nombre" name="nombre" required 
+ value="{{ alumno.nombre.split(' ')[0] if alumno else '' }}">
+ </div>
+ <div class="col-md-6 mb-3">
+ <label for="apellido" class="form-label">Apellido(s) del Estudiante</label>
+ <input type="text" class="form-control" id="apellido" name="apellido" required
+ value="{{ alumno.nombre.split(' ')[1:]|join(' ') if alumno and alumno.nombre.split(' ')[1:] else '' }}">
+ </div>
+ </div>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+<input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required 
+value="2010-01-01"> 
+</div>
+<div class="col-md-6 mb-3">
+<label for="categoria" class="form-label">Categoría/Grupo</label>
+<input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ej: Sub-15"
+value="{{ alumno.categoria if alumno else '' }}">
+
+<div class="card shadow-sm mb-4">
+<div class="card-header bg-success text-white">Contacto del Representante</div>
+<div class="card-body">
+<div class="mb-3">
+<label for="contacto_padre" class="form-label">Información de Contacto (Teléfono/Email)</label>
+<textarea class="form-control" id="contacto_padre" name="contacto_padre" required>{{ alumno.contacto if alumno else '' }}</textarea>
+</div>
+</div>
+</div>
+
+<div class="d-flex justify-content-end">
+{# 🚨 CORREGIDO: Apunta a 'movimiento' en lugar de 'alumnos' #}
+<a href="{{ url_for('movimiento') }}" class="btn btn-secondary me-2">Cancelar</a>
+<button type="submit" class="btn btn-warning fw-bold">
+<i class="bi bi-save me-1"></i> {{ 'Guardar Cambios' if alumno else 'Inscribir Alumno' }}
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

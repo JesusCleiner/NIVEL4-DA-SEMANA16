@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Nosotros | Escuela de Fútbol TOHALLY{% endblock %}
+
+{% block content %}
+
+<header class="bg-primary text-white p-5 rounded-3 mb-5 text-center shadow-lg">
+    <h1 class="fw-bold">Nuestra Historia y Pasión</h1>
+    <p class="lead">Conoce el corazón de TOHALLY, una escuela dedicada a forjar no solo grandes jugadores, sino grandes personas.</p>
+</header>
+
+---
+
+<section class="mb-5">
+    <div class="row align-items-center">
+        <div class="col-md-7">
+            <h2 class="text-secondary fw-bold mb-3">Filosofía TOHALLY: Formación 360°</h2>
+            <p>TOHALLY nació de la visión de crear un espacio donde el **desarrollo deportivo** camine de la mano con la **formación en valores**. Creemos que el fútbol es una herramienta poderosa para enseñar disciplina, respeto, trabajo en equipo y liderazgo.</p>
+            <p class="fst-italic border-start border-3 border-primary ps-3 pt-1 pb-1">
+                "Nuestro objetivo no es solo ganar partidos, sino ayudar a cada joven a alcanzar su máximo potencial dentro y fuera del campo."
+            </p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5 class="fw-bold"><i class="bi bi-person-fill-gear me-2 text-primary"></i>Nuestra Misión</h5>
+                    <p>Ser la academia referente en la formación integral de futbolistas juveniles en la región.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="fw-bold"><i class="bi bi-eye-fill me-2 text-primary"></i>Nuestra Visión</h5>
+                    <p>Fomentar la excelencia deportiva y humana a través de una metodología innovadora y un cuerpo técnico de élite.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 d-flex justify-content-center mt-4 mt-md-0">
+            <img src="{{ url_for('static', filename='img/filosofia.png') }}" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/400x350/004e92/ffffff?text=FOTO+FILOSOFIA'" 
+                 alt="Filosofía de Entrenamiento" 
+                 class="img-fluid rounded shadow-lg" style="object-fit: cover; height: 350px; width: 100%;">
+        </div>
+    </div>
+</section>
+
+---
+
+<section class="py-5 bg-light mb-5">
+    <h2 class="text-center fw-bold mb-5">Conoce a Nuestro Cuerpo Técnico</h2>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        
+        <div class="col">
+            <div class="card h-100 text-center shadow border-0">
+                <img src="{{ url_for('static', filename='img/entrenador1.png') }}" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/5cb85c/ffffff?text=DT+PRINCIPAL'" 
+                     class="card-img-top mx-auto mt-3 rounded-circle" alt="Director Técnico" style="width: 150px; height: 150px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">Juan Gutiérrez</h4>
+                    <h6 class="text-primary mb-3">Director Técnico General</h6>
+                    <p class="card-text small">Licencia UEFA Pro. 15 años de experiencia en desarrollo juvenil y 5 como director de academia.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-secondary">Táctica</span>
+                        <span class="badge bg-secondary">Gestión de Grupo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 text-center shadow border-0">
+                <img src="{{ url_for('static', filename='img/entrenador2.png') }}" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/f0ad4e/ffffff?text=ENTRENADOR+2'" 
+                     class="card-img-top mx-auto mt-3 rounded-circle" alt="Entrenador Desarrollo" style="width: 150px; height: 150px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">Carla Soto</h4>
+                    <h6 class="text-info mb-3">Entrenadora Categorías Inferiores</h6>
+                    <p class="card-text small">Especialista en psicomotricidad y desarrollo infantil. Enfoque en la técnica fundamental.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-secondary">Motricidad</span>
+                        <span class="badge bg-secondary">Técnica Individual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 text-center shadow border-0">
+                <img src="{{ url_for('static', filename='img/entrenador_fisico.png') }}" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x200/d9534f/ffffff?text=PREPARADOR+FISICO'" 
+                     class="card-img-top mx-auto mt-3 rounded-circle" alt="Preparador Físico" style="width: 150px; height: 150px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">Roberto Méndez</h4>
+                    <h6 class="text-danger mb-3">Preparador Físico y Nutricional</h6>
+                    <p class="card-text small">Certificado en alto rendimiento deportivo. Encargado de la planificación de cargas y prevención de lesiones.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-secondary">Fuerza</span>
+                        <span class="badge bg-secondary">Prevención</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+---
+
+<section class="py-5 text-center bg-info text-white rounded-3 shadow">
+    <div class="container">
+        <h2 class="fw-bold">Sé Parte de la Familia TOHALLY</h2>
+        <p class="lead">¿Tienes lo que se necesita? Conoce nuestros horarios y da el primer paso para tu futuro futbolístico.</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-warning btn-lg mt-3 shadow"><i class="bi bi-send-fill me-2"></i> Iniciar Pre-Inscripción</a>
+    </div>
+</section>
+
+{% endblock %}

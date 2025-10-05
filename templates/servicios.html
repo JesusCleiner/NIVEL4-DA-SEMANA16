@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Servicios | Escuela de Fútbol TOHALLY{% endblock %}
+
+{% block content %}
+
+<header class="bg-light p-5 rounded-3 mb-5 text-center">
+    <h1 class="fw-bold text-primary">Nuestros Programas de Formación</h1>
+    <p class="lead">Ofrecemos un desarrollo integral que cubre la técnica, la táctica y la mentalidad deportiva para cada etapa de crecimiento.</p>
+</header>
+
+<section class="mb-5">
+    <h2 class="text-center mb-4">Metodología y Categorías</h2>
+    
+    <ul class="nav nav-tabs nav-justified" id="serviciosTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="programa-tab" data-bs-toggle="tab" data-bs-target="#programa-pane" type="button" role="tab" aria-controls="programa-pane" aria-selected="true"><i class="bi bi-person-lines-fill me-2"></i>Programa General</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="elite-tab" data-bs-toggle="tab" data-bs-target="#elite-pane" type="button" role="tab" aria-controls="elite-pane" aria-selected="false"><i class="bi bi-award-fill me-2"></i>Rendimiento Élite</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="entrenadores-tab" data-bs-toggle="tab" data-bs-target="#entrenadores-pane" type="button" role="tab" aria-controls="entrenadores-pane" aria-selected="false"><i class="bi bi-person-workspace me-2"></i>Cuerpo Técnico</button>
+        </li>
+    </ul>
+
+    <div class="tab-content border border-top-0 p-4 bg-white shadow-sm" id="serviciosTabContent">
+        
+        <div class="tab-pane fade show active" id="programa-pane" role="tabpanel" aria-labelledby="programa-tab" tabindex="0">
+            <h3 class="text-secondary mb-4">Formación por Categoría</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 p-3 border-0 shadow-sm">
+                        <i class="bi bi-balloon-fill display-5 text-success mb-3"></i>
+                        <h4 class="card-title fw-bold">👶 Pre-Fútbol (4 - 6 años)</h4>
+                        <p class="card-text">Enfoque lúdico en la coordinación, psicomotricidad y los fundamentos del juego con diversión.</p>
+                        <span class="badge bg-success mt-auto">Inscripción Abierta</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-3 border-0 shadow-sm">
+                        <i class="bi bi-dribbble display-5 text-info mb-3"></i>
+                        <h4 class="card-title fw-bold">⚽ Desarrollo (7 - 12 años)</h4>
+                        <p class="card-text">Afianzamiento de la técnica individual, introducción a la táctica básica y desarrollo de la toma de decisiones.</p>
+                        <span class="badge bg-info mt-auto">Cupos Limitados</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-3 border-0 shadow-sm">
+                        <i class="bi bi-rocket-fill display-5 text-warning mb-3"></i>
+                        <h4 class="card-title fw-bold">🚀 Alto Nivel (13 - 17 años)</h4>
+                        <p class="card-text">Perfeccionamiento táctico, preparación física avanzada y participación en torneos de alto rendimiento.</p>
+                        <span class="badge bg-warning mt-auto">Requisitos de Admisión</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="elite-pane" role="tabpanel" aria-labelledby="elite-tab" tabindex="0">
+            <h3 class="text-danger mb-4">Programa de Proyección Profesional</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Entrenamiento personalizado 5 veces por semana.</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Análisis de video individual y grupal.</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Evaluaciones físicas y nutricionales.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Convenios con clubes profesionales para *scouting*.</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Giras y campamentos internacionales.</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-danger me-2"></i>Seguimiento académico y tutoría deportiva.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="entrenadores-pane" role="tabpanel" aria-labelledby="entrenadores-tab" tabindex="0">
+            <h3 class="text-info mb-4">La Fuerza de TOHALLY: Nuestros Entrenadores</h3>
+            <p>Contamos con un equipo de profesionales con licencias CONMEBOL y UEFA, especializados en formación de menores. Su enfoque es la **disciplina, el respeto y la pasión** por el juego.</p>
+            <a href="{{ url_for('nosotros') }}" class="btn btn-info mt-3"><i class="bi bi-arrow-right-circle-fill me-2"></i>Conocer el Staff Completo</a>
+        </div>
+
+    </div>
+</section>
+
+---
+
+<section class="py-5 text-center bg-primary text-white rounded-3 shadow">
+    <div class="container">
+        <h2 class="fw-bold">¡Empieza tu Prueba Gratuita!</h2>
+        <p class="lead">Envíanos tu pre-inscripción y te daremos un pase para una semana de entrenamiento sin costo.</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-warning btn-lg mt-3 shadow"><i class="bi bi-clipboard-check-fill me-2"></i> Contactar e Inscribirme Ahora</a>
+    </div>
+</section>
+
+{% endblock %}

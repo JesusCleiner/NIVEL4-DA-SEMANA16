@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Movimiento - TOHALLY{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Gestión de Alumnos (Movimiento)</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Categoría</th>
+                    <th>Contacto</th>
+                    <th>Tipo Solicitud</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.id }}</td>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.edad }}</td>
+                    <td>{{ alumno.categoria }}</td>
+                    <td>{{ alumno.contacto }}</td>
+                    <td>{{ alumno.tipo_solicitud }}</td>
+                    <td>
+                        <a href="{{ url_for('inscribir_estudiante', alumno_id=alumno.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                        
+                        <form method="POST" action="{{ url_for('eliminar_alumno', alumno_id=alumno.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar el registro de {{ alumno.nombre }}?')">
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay alumnos o solicitudes registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

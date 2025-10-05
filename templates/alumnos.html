@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Listado de Alumnos - TOHALLY{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Listado de Alumnos y Solicitudes</h1>
+        <a href="{{ url_for('inscribir_estudiante') }}" class="btn btn-primary">
+            <i class="bi bi-person-plus"></i> Inscribir Nuevo
+        </a>
+    </div>
+
+    {% if alumnos %}
+    <div class="table-responsive shadow-sm">
+        <table class="table table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Categoría</th>
+                    <th>Tipo de Solicitud</th>
+                    <th>Contacto</th>
+                    <th>Fecha</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.id }}</td>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.edad }}</td>
+                    <td>{{ alumno.categoria }}</td>
+                    <td>
+                        {% if alumno.tipo_solicitud == 'Pre-Inscripción' %}
+                            <span class="badge bg-warning text-dark">{{ alumno.tipo_solicitud }}</span>
+                        {% elif alumno.tipo_solicitud == 'Inscrito por Admin' %}
+                            <span class="badge bg-success">{{ alumno.tipo_solicitud }}</span>
+                        {% else %}
+                            <span class="badge bg-info text-dark">{{ alumno.tipo_solicitud }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ alumno.contacto }}</td>
+                    <td>{{ alumno.fecha_solicitud.strftime('%d/%m/%Y') if alumno.fecha_solicitud else '' }}</td>
+                    <td class="text-center">
+                        <a href="{{ url_for('inscribir_estudiante', alumno_id=alumno.id) }}" class="btn btn-sm btn-outline-warning me-1">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <form action="{{ url_for('eliminar_alumno', alumno_id=alumno.id) }}" method="POST" class="d-inline"
+                              onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        No hay registros de alumnos o solicitudes aún.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

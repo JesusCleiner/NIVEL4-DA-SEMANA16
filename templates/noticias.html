@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Últimas Noticias | Escuela de Fútbol TOHALLY{% endblock %}
+
+{% block content %}
+
+<header class="bg-secondary text-white p-5 rounded-3 mb-5 text-center shadow-lg">
+    <h1 class="fw-bold">Novedades y Eventos de TOHALLY</h1>
+    <p class="lead">Mantente al día con nuestros logros, talleres y anuncios importantes.</p>
+</header>
+
+<section class="mb-5">
+    <h2 class="text-center mb-4 text-primary">Archivo de Noticias</h2>
+
+    <div class="row">
+        
+        {# ------------------------ #}
+        {# 🥇 TARJETA DE NOTICIA 1 (Goleada - Usa 'goleada.png') #}
+        {# ------------------------ #}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                
+                {# Carga de Imagen: Ruta Fija a static/img/goleada.png #}
+                <img src="{{ url_for('static', filename='img/goleada.png') }}" 
+                    class="card-img-top" 
+                    alt="Goleada Histórica" 
+                    style="height: 200px; object-fit: cover;">
+                
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">¡Goleada Histórica en el Torneo Regional!</h5>
+                    <p class="card-text text-muted small"><i class="bi bi-calendar-event me-2"></i>Publicado el 28/SEP/2025</p>
+                    <p class="card-text">Nuestra categoría sub-15 demostró un dominio absoluto en la final y se alzó con la copa. El futuro es brillante en TOHALLY.</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary mt-2 disabled mt-auto" aria-disabled="true">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+        {# ------------------------ #}
+        {# 🍎 TARJETA DE NOTICIA 2 (Nutrición - Usa 'noticia2.png') #}
+        {# ------------------------ #}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                
+                {# Carga de Imagen: Ruta Fija a static/img/nutricion.png #}
+                <img src="{{ url_for('static', filename='img/nutricion.png') }}"
+                    class="card-img-top"
+                    alt="Taller de Nutrición"
+                    style="height: 200px; object-fit: cover;">
+                
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Taller de Nutrición y Rendimiento Físico</h5>
+                    <p class="card-text text-muted small"><i class="bi bi-calendar-event me-2"></i>Publicado el 20/SEP/2025</p>
+                    <p class="card-text">El Dr. Méndez impartió una charla clave sobre la dieta del futbolista de alto nivel y la hidratación en climas cálidos.</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary mt-2 disabled mt-auto" aria-disabled="true">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+        {# ------------------------ #}
+        {# 🏆 TARJETA DE NOTICIA 3 (Trofeo - Usa 'trofeo.jpg') #}
+        {# ------------------------ #}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                
+                {# Carga de Imagen: Ruta Fija a static/img/trofeo.jpg #}
+                <img src="{{ url_for('static', filename='img/entrenador.png') }}" 
+                    class="card-img-top" 
+                    alt="Entrega de Trofeo" 
+                    style="height: 200px; object-fit: cover;">
+                
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Clausura y Entrega de Trofeos Anual</h5>
+                    <p class="card-text text-muted small"><i class="bi bi-calendar-event me-2"></i>Publicado el 15/SEP/2025</p>
+                    <p class="card-text">Cerramos la temporada con una emotiva ceremonia reconociendo el esfuerzo y la pasión de todos nuestros jóvenes atletas.</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary mt-2 disabled mt-auto" aria-disabled="true">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    {# Se elimina el bloque {% if not noticias %} ya que las noticias son estáticas #}
+
+</section>
+
+---
+
+<section class="py-5 text-center bg-light rounded-3 shadow">
+    <div class="container">
+        <h2 class="fw-bold">¿Tienes preguntas?</h2>
+        <p class="lead">Contáctanos para más información sobre nuestros programas.</p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-lg mt-3"><i class="bi bi-send-fill me-2"></i> Ir a Contacto</a>
+    </div>
+</section>
+
+{% endblock %}
